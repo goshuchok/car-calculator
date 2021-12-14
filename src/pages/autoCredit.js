@@ -1,11 +1,13 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import ChoiceAuto from '../components/credit/ChoiceAuto';
+import CreditTitle from '../components/credit/CreditTitle';
 
 function AutoCredit() {
   return (
-    <div>
-      <Typography>Take the credit of our dream</Typography>
-    </div>
+    <>
+      <CreditTitle />
+      <ChoiceAuto />
+    </>
   );
 }
 

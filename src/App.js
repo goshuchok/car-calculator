@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import By from './pages/by';
 import Contact from './pages/contact';
@@ -19,9 +18,6 @@ function App() {
           <Route path="/sell" element={<Sell />} />
           <Route path="/autocredit" element={<AutoCredit />} />
         </Routes>
-        <Button variant="contained" color="primary" disableElevation>
-          Disable elevation
-        </Button>
         <Footer />
       </Router>
     </div>

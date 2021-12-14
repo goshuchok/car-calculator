@@ -1,0 +1,23 @@
+.credit_title {
+  color: #2c2c2c;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 76px;
+}
+
+.choice_title {
+  font-size: 24px;
+  line-height: 38px;
+  font-weight: 400;
+  &::before {
+    margin-left: -47px;
+    position: absolute;
+    content: '01';
+    height: 30px;
+    width: 24px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 38px;
+    color: #07b1fd;
+  }
+}

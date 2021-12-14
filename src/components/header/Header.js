@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  AppBar,
   Toolbar,
   CssBaseline,
   useTheme,
@@ -19,15 +18,13 @@ function Header() {
 
   return (
     <Container>
-      <AppBar className="header" position="static">
-        <CssBaseline />
-        <Toolbar className="toolBar">
-          <Logo />
-          {isMobile ? <DrawerComponent /> : <Navigation />}
-          <Location />
-          <Phone />
-        </Toolbar>
-      </AppBar>
+      <CssBaseline />
+      <Toolbar className="header">
+        <Logo />
+        {isMobile ? <DrawerComponent /> : <Navigation />}
+        <Location />
+        <Phone />
+      </Toolbar>
     </Container>
   );
 }
