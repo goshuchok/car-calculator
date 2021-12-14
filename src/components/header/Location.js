@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import cityLocation from '../images/city.png';
+import cityLocation from '../../images/city.png';
 
 const cities = [
   {
@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: '163',
     },
+    display: 'flex',
+    alignItems: 'center',
   },
 }));
 

@@ -1,4 +1,4 @@
-import phone from '../images/phone.png';
+import phone from '../../images/phone.png';
 
 function Phone() {
   return (
