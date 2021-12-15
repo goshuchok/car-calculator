@@ -14,7 +14,6 @@ function Sell() {
     };
     fetchPosts();
   }, []);
-
   const usePosts = posts.map((post, id) => {
     return (
       <ol key={id}>
