@@ -1,8 +1,12 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 
 function By() {
-  return <Typography>By this auto</Typography>;
+  return (
+    <Container>
+      <Typography>By this auto</Typography>
+    </Container>
+  );
 }
 
 export default By;
