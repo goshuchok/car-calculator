@@ -12,7 +12,7 @@ import {
   IconButton,
   Grid,
   Checkbox,
-  FormControlLabel,
+  // FormControlLabel,
 } from '@material-ui/core';
 import car from '../../images/car.png';
 import shield from '../../images/shield.png';
