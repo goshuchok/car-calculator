@@ -1,4 +1,4 @@
-import { Box, Slider, TextField } from '@material-ui/core';
+import { Box, Grid, Slider, TextField, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 
 function SliderTerm() {
@@ -17,6 +17,14 @@ function SliderTerm() {
         }}
       />
       <Slider onChange={(_, v) => setValue(v)} defaultValue={30} step={10} />
+      <Grid container>
+        <Grid item xs={6} sm={6}>
+          <Typography>1 мес</Typography>
+        </Grid>
+        <Grid item xs={6} sm={6}>
+          <Typography align="right">96 мес</Typography>
+        </Grid>
+      </Grid>
     </Box>
   );
 }

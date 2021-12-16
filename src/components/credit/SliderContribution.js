@@ -1,4 +1,4 @@
-import { Box, Slider, TextField } from '@material-ui/core';
+import { Box, Grid, Slider, TextField, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 
 function SliderContribution() {
@@ -21,7 +21,20 @@ function SliderContribution() {
         }}
       />
 
-      <Slider onChange={handleChange} aria-labelledby="continuous-slider" />
+      <Slider
+        onChange={handleChange}
+        aria-labelledby="continuous-slider"
+        defaultValue={30}
+        max={50}
+      />
+      <Grid container>
+        <Grid item xs={6} sm={6}>
+          <Typography>0 %</Typography>
+        </Grid>
+        <Grid item xs={6} sm={6}>
+          <Typography align="right">50%</Typography>
+        </Grid>
+      </Grid>
     </Box>
   );
 }
