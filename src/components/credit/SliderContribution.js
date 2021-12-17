@@ -2,7 +2,7 @@ import { Box, Grid, Slider, TextField, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 
 function SliderContribution() {
-  const [value, setValue] = useState('30%');
+  const [value, setValue] = useState('30');
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -10,11 +10,11 @@ function SliderContribution() {
     <Box>
       <TextField
         label="Первый взнос"
-        // autoFocus
-        value={value}
+        value={`${value}%`}
         size="medium"
         readOnly
         fullWidth
+        max={50}
         variant="standard"
         InputProps={{
           disableUnderline: true,
