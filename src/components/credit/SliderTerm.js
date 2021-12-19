@@ -1,8 +1,21 @@
 import { Box, Grid, Slider, TextField, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 
+function calcFormat(value) {
+  let currentValue = value;
+
+  if (currentValue < 12) {
+    return `${currentValue} месяцев`;
+  } else if (currentValue >= 12) {
+    const month = currentValue % 12;
+    const year = (currentValue - (currentValue % 12)) / 12;
+    return `${year} лет ${month} месяцев`;
+  }
+  return currentValue;
+}
+
 function SliderTerm() {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -11,7 +24,7 @@ function SliderTerm() {
     <Box>
       <TextField
         label="Желаемый срок кредита"
-        value={value}
+        value={`${calcFormat(value)}`}
         size="medium"
         fullWidth
         readOnly
@@ -19,7 +32,7 @@ function SliderTerm() {
           disableUnderline: true,
         }}
       />
-      <Slider onChange={handleChange} defaultValue={30} step={10} max={96} />
+      <Slider onChange={handleChange} step={1} max={96} />
       <Grid container>
         <Grid item xs={6} sm={6}>
           <Typography>1 мес</Typography>
