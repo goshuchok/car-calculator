@@ -2,6 +2,7 @@ import { GET_USERS_ERROR, GET_USERS_SUCCESS } from '../constants/userTypes';
 
 const initialState = {
   users: [],
+  usersFetchError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +11,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.payload,
+        usersFetchError: false,
       };
     case GET_USERS_ERROR:
       return {
