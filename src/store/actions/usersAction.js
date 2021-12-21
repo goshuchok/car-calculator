@@ -4,7 +4,6 @@ import { GET_USERS_ERROR, GET_USERS_SUCCESS } from '../constants/userTypes';
 export const getUsersAction = () => (dispatch) => {
   getUsers()
     .then((response) =>
-      // console.log('response', response),
       dispatch({
         type: GET_USERS_SUCCESS,
         payload: response.data,
