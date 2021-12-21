@@ -9,35 +9,24 @@ import {
   CardActionArea,
   Card,
   Typography,
-  IconButton,
   Grid,
   Checkbox,
-  // FormControlLabel,
 } from '@material-ui/core';
 import car from '../../images/car.png';
 import shield from '../../images/shield.png';
-import { DeleteOutline } from '@material-ui/icons';
 
-function CarsCard({ note, handleDelete }) {
+function CarsCard({ carApi, handleDelete }) {
   return (
     <div>
       <Card>
-        <CardHeader
-          action={
-            <IconButton onClick={() => handleDelete(note.id)}>
-              <DeleteOutline />
-            </IconButton>
-          }
-          title={note.name}
-          subheader={note.value}
-        />
+        <CardHeader title={carApi.name} subheader={carApi.value} />
         <CardActionArea>
           <CardMedia style={{ height: 0, paddingTop: '56.25%' }} image={car} />
         </CardActionArea>
         <CardActionArea>
           <CardContent>
-            <Typography>{note.name}</Typography>
-            <Typography>{note.value}</Typography>
+            <Typography>{carApi.name}</Typography>
+            <Typography>{carApi.value}</Typography>
             <Typography>2013 год / автомат</Typography>
             <Typography>Hyundai Solaris 2013 года</Typography>
             <Grid container>
