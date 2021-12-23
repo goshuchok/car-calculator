@@ -7,22 +7,22 @@ import { getCarsAction } from '../../store/actions/carsAction';
 
 function ChoiceAuto() {
   const { cars } = useSelector((state) => state.carsData);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getCarsAction());
-  }, []);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getCarsAction());
+  // }, []);
   return (
     <div>
       <Container>
         <h4 className="choice_title">Выберите авто</h4>
         <CreditInput />
-        <Grid container spacing={3}>
+        {/* <Grid container spacing={3}>
           {cars.map((carApi, id) => (
             <Grid item key={id} xs={12} md={6} lg={4}>
               <CarsCard carApi={carApi} />
             </Grid>
           ))}
-        </Grid>
+        </Grid> */}
       </Container>
     </div>
   );
