@@ -1,0 +1,2 @@
+export const GET_MODEL_SUCCESS = 'GET_MODEL_SUCCESS';
+export const GET_MODEL_ERROR = 'GET_MODEL_ERROR';

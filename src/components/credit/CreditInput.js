@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCarsAction } from '../../store/actions/carsAction';
+import { getModelAction } from '../../store/actions/modelAction';
 
 const brandModel = [
   {
@@ -48,11 +49,16 @@ function CreditInput() {
     setModelCar(event.target.value);
   };
   const { cars } = useSelector((state) => state.carsData);
+  const { model } = useSelector((state) => state.modelData);
+  console.log('model', model);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCarsAction());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(getModelAction());
+  }, [dispatch]);
   return (
     <form
       className={classes.root}
@@ -92,6 +98,21 @@ function CreditInput() {
             <option key={option.model} value={option.model}>
               {brandCar}
             </option>
+          ))}
+        </TextField>
+        <TextField
+          id="outlined-select-currency"
+          select
+          label="Select"
+          // value={brandCar}
+          defaultValue=""
+          onChange={handleChangeBrand}
+          variant="filled"
+        >
+          {model.map((model, id) => (
+            <MenuItem key={id} value={model.name}>
+              {model.name}
+            </MenuItem>
           ))}
         </TextField>
       </div>
