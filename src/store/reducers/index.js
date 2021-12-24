@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import usersData from './users';
-import carsData from './cars';
+import marksData from './marks';
 import modelData from './model';
 
 export default combineReducers({
   usersData,
-  carsData,
+  marksData,
   modelData,
 });

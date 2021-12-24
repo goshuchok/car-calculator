@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCarsAction } from '../../store/actions/carsAction';
+import { getMarksAction } from '../../store/actions/marksAction';
 import { getModelAction } from '../../store/actions/modelAction';
 
 const brandModel = [
@@ -36,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
 
 function CreditInput() {
   const classes = useStyles();
-  const [brandCar, setBrandCar] = useState('');
-  const [modelCar, setModelCar] = useState('Solaris');
+  const [brandCar, setBrandCar] = useState([]);
+  const [modelCar, setModelCar] = useState([]);
 
   // const handleSubmit = (event) => {
   //   event.preventDefault();
@@ -48,17 +48,17 @@ function CreditInput() {
   const handleChangeModel = (event) => {
     setModelCar(event.target.value);
   };
-  const { cars } = useSelector((state) => state.carsData);
+  const { marks } = useSelector((state) => state.marksData);
   const { model } = useSelector((state) => state.modelData);
   console.log('model', model);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCarsAction());
+    dispatch(getMarksAction());
   }, [dispatch]);
-
   useEffect(() => {
     dispatch(getModelAction());
   }, [dispatch]);
+
   return (
     <form
       className={classes.root}
@@ -76,14 +76,14 @@ function CreditInput() {
           onChange={handleChangeBrand}
           variant="filled"
         >
-          {cars.map((car, id) => (
-            <MenuItem key={id} value={car.name}>
-              {car.name}
+          {marks.map((mark, id) => (
+            <MenuItem key={id} value={mark.name}>
+              {mark.name}
             </MenuItem>
           ))}
         </TextField>
         <p>werwerwer {brandCar}</p>
-        <TextField
+        {/* <TextField
           id="outlined-select-currency-native"
           select
           label="Native select"
@@ -99,14 +99,14 @@ function CreditInput() {
               {brandCar}
             </option>
           ))}
-        </TextField>
+        </TextField> */}
         <TextField
           id="outlined-select-currency"
           select
           label="Select"
           // value={brandCar}
           defaultValue=""
-          onChange={handleChangeBrand}
+          onChange={handleChangeModel}
           variant="filled"
         >
           {model.map((model, id) => (

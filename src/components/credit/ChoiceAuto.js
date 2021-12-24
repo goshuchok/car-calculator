@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import CarsCard from './CarsCard';
 import CreditInput from './CreditInput';
 import { Container, Grid } from '@material-ui/core';
-import { getCarsAction } from '../../store/actions/carsAction';
+import { getMarksAction } from '../../store/actions/marksAction';
 
 function ChoiceAuto() {
-  const { cars } = useSelector((state) => state.carsData);
+  const { marks } = useSelector((state) => state.marksData);
   // const dispatch = useDispatch();
   // useEffect(() => {
-  //   dispatch(getCarsAction());
+  //   dispatch(getMarksAction());
   // }, []);
   return (
     <div>

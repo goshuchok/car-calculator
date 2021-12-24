@@ -2,7 +2,7 @@ import { GET_MODEL_ERROR, GET_MODEL_SUCCESS } from '../constants/modelTypes';
 
 const initialState = {
   model: [],
-  carsFetchError: false,
+  modelFetchError: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,14 +11,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         model: action.payload,
-        carsFetchError: false,
+        modelFetchError: false,
       };
 
     case GET_MODEL_ERROR:
       return {
         ...state,
         model: [],
-        carsFetchError: true,
+        modelFetchError: true,
       };
 
     default:

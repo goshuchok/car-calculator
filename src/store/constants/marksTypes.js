@@ -1,0 +1,2 @@
+export const GET_MARKS_SUCCESS = 'GET_MARKS_SUCCESS';
+export const GET_MARKS_ERROR = 'GET_MARKS_ERROR';
