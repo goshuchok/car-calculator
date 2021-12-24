@@ -48,9 +48,12 @@ function CreditInput() {
   const handleChangeModel = (event) => {
     setModelCar(event.target.value);
   };
+
+  const { search } = useSelector((state) => state.searchData);
   const { marks } = useSelector((state) => state.marksData);
   const { model } = useSelector((state) => state.modelData);
-  console.log('model', model);
+  console.log(search);
+  // console.log('model', model);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMarksAction());
