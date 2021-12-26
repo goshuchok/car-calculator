@@ -8,6 +8,7 @@ import Sell from './pages/sell';
 import AutoCredit from './pages/autoCredit';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
+import NotFound from './pages/notFound';
 
 const store = configureStore();
 
@@ -22,6 +23,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/sell" element={<Sell />} />
             <Route path="/autocredit" element={<AutoCredit />} />
+            <Route path="/*" element={<NotFound />} />
           </Routes>
           <Footer />
         </Router>

@@ -5,25 +5,26 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMarksAction } from '../../store/actions/marksAction';
 import { getModelAction } from '../../store/actions/modelAction';
+import { getSearchAction } from '../../store/actions/searchAction';
 
-const brandModel = [
-  {
-    brand: 'Hyundai',
-    model: 'Solaris',
-  },
-  {
-    brand: 'Volkswagen',
-    model: 'GOLF',
-  },
-  {
-    brand: 'Ford',
-    model: 'Focus',
-  },
-  {
-    brand: 'Skoda',
-    model: 'Octavia',
-  },
-];
+// const brandModel = [
+//   {
+//     brand: 'Hyundai',
+//     model: 'Solaris',
+//   },
+//   {
+//     brand: 'Volkswagen',
+//     model: 'GOLF',
+//   },
+//   {
+//     brand: 'Ford',
+//     model: 'Focus',
+//   },
+//   {
+//     brand: 'Skoda',
+//     model: 'Octavia',
+//   },
+// ];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,15 +53,18 @@ function CreditInput() {
   const { search } = useSelector((state) => state.searchData);
   const { marks } = useSelector((state) => state.marksData);
   const { model } = useSelector((state) => state.modelData);
-  console.log(search);
   // console.log('model', model);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getSearchAction());
+  }, [dispatch]);
   useEffect(() => {
     dispatch(getMarksAction());
   }, [dispatch]);
   useEffect(() => {
     dispatch(getModelAction());
   }, [dispatch]);
+  console.log('search', search.result);
 
   return (
     <form
