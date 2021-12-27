@@ -1,11 +1,13 @@
 import React from 'react';
+import FooterMobileDown from './FooterMobileDown';
 import FooterMobileMenu from './FooterMobileMenu';
 
 function FooterMobile() {
   return (
-    <div>
+    <>
       <FooterMobileMenu />
-    </div>
+      <FooterMobileDown />
+    </>
   );
 }
 
