@@ -6,14 +6,24 @@ import {
   List,
   ListItem,
   ListItemText,
+  makeStyles,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    [theme.breakpoints.between('xs', 'md')]: {
+      order: 4,
+    },
+  },
+}));
+
 function DrawerComponent() {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const classes = useStyles();
   return (
-    <>
+    <div className={classes.root}>
       <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
         <List>
           <Divider />
@@ -54,7 +64,7 @@ function DrawerComponent() {
       <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
         <MenuIcon />
       </IconButton>
-    </>
+    </div>
   );
 }
 export default DrawerComponent;

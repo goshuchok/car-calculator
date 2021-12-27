@@ -1,18 +1,26 @@
 import { makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
 
 const useStyles = makeStyles((theme) => ({
   logo: {
     cursor: 'pointer',
   },
+  root: {
+    [theme.breakpoints.between('xs', 'md')]: {
+      order: 1,
+    },
+  },
 }));
 
 function Logo() {
   const classes = useStyles();
   return (
-    <>
-      <img src={logo} alt="logo" className={classes.logo} />
-    </>
+    <div className={classes.root}>
+      <Link className="shine-button" to="/" style={{ textDecoration: 'none' }}>
+        <img src={logo} alt="logo" className={classes.logo} />
+      </Link>
+    </div>
   );
 }
 

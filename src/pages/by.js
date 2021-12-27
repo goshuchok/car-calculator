@@ -19,7 +19,7 @@ function By() {
   return (
     <Container>
       <Typography>By this auto</Typography>
-      <Grid container spacing={3}>
+      <Grid>
         {users.map((user) => (
           <Grid item key={user.id} xs={12} md={6} lg={4}>
             <Card>

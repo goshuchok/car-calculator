@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     },
     display: 'flex',
     alignItems: 'center',
+    [theme.breakpoints.between('sm', 'md')]: {
+      order: 2,
+    },
     [theme.breakpoints.only('xs')]: {
       display: 'none',
     },
