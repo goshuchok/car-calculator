@@ -11,17 +11,23 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     background: '#2c3a4b',
-    color: '#bdbdbd',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     flexBasis: '33.33%',
     flexShrink: 0,
   },
-  // secondaryHeading: {
-  //   fontSize: theme.typography.pxToRem(15),
-  //   color: theme.palette.text.secondary,
-  // },
+  accordion_menu: {
+    backgroundColor: '#2c3a4b',
+    color: '#FFFFFF',
+    margin: '0',
+    '&:before': {
+      display: 'none',
+    },
+  },
+  details: {
+    color: '#bdbdbd',
+  },
 }));
 
 function FooterMobileMenu() {
@@ -37,6 +43,8 @@ function FooterMobileMenu() {
       <Accordion
         expanded={expanded === 'panel1'}
         onChange={handleChange('panel1')}
+        className={classes.accordion_menu}
+        elevation={0}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -75,6 +83,8 @@ function FooterMobileMenu() {
       <Accordion
         expanded={expanded === 'panel2'}
         onChange={handleChange('panel2')}
+        className={classes.accordion_menu}
+        elevation={0}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -108,6 +118,8 @@ function FooterMobileMenu() {
       <Accordion
         expanded={expanded === 'panel3'}
         onChange={handleChange('panel3')}
+        className={classes.accordion_menu}
+        elevation={0}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -146,6 +158,8 @@ function FooterMobileMenu() {
       <Accordion
         expanded={expanded === 'panel4'}
         onChange={handleChange('panel4')}
+        className={classes.accordion_menu}
+        elevation={0}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

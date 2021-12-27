@@ -13,17 +13,17 @@ function FooterMobileDown() {
       >
         <Grid container>
           <Grid item xs={9} sm={9}>
-            <Box textAlign="left" pb={{ xs: 5, sm: 0 }}>
+            <Box textAlign="left" pb={{ xs: 5, sm: 5 }}>
               С 2011 года, Crystal Motors — Надежные автомобили с пробегом.
               <br />
               Продажа автомобилей с пробегом в Екатеринбурге.
             </Box>
           </Grid>
-          <Grid xs={3} sm={3}></Grid>
-          <Grid xs={6} sm={6}>
+          <Grid item xs={3} sm={3}></Grid>
+          <Grid item xs={6} sm={6}>
             <Typography>Разработка сайта</Typography>
           </Grid>
-          <Grid xs={6} sm={6}>
+          <Grid item xs={6} sm={6}>
             <img src={logo} alt="logo" />
           </Grid>
         </Grid>
