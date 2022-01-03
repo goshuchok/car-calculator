@@ -4,13 +4,16 @@ import CarsCard from './CarsCard';
 import CreditInput from './CreditInput';
 import { Container, Grid } from '@material-ui/core';
 import { getMarksAction } from '../../store/actions/marksAction';
+import { getModelAction } from '../../store/actions/modelAction';
 
 function ChoiceAuto() {
   const { marks } = useSelector((state) => state.marksData);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getMarksAction());
-  // }, []);
+  const { model } = useSelector((state) => state.modelData);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // dispatch(getMarksAction());
+    dispatch(getModelAction());
+  }, []);
   return (
     <div>
       <Container>
@@ -23,6 +26,18 @@ function ChoiceAuto() {
             </Grid>
           ))}
         </Grid> */}
+        {/* <Grid container spacing={3}>
+          {model.map((carApi, id) => (
+            <Grid item key={id} xs={12} md={6} lg={4}>
+              <CarsCard carApi={carApi} />
+            </Grid>
+          ))}
+        </Grid> */}
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6} lg={4}>
+            <CarsCard />
+          </Grid>
+        </Grid>
       </Container>
     </div>
   );
