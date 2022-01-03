@@ -5,7 +5,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Grid, Link } from '@material-ui/core';
+import { Box, Grid, Link } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,12 +21,20 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#2c3a4b',
     color: '#FFFFFF',
     margin: '0',
+
     '&:before': {
       display: 'none',
     },
   },
   details: {
     color: '#bdbdbd',
+  },
+  summaryExpanded: {
+    flexGrow: '0',
+    display: 'block',
+  },
+  summaryRoot: {
+    display: 'inline-flex',
   },
 }));
 
@@ -50,32 +58,37 @@ function FooterMobileMenu() {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
+          classes={{
+            content: classes.summaryExpanded,
+            root: classes.summaryRoot,
+          }}
         >
           <Typography className={classes.heading}>Купить</Typography>
         </AccordionSummary>
+
         <AccordionDetails>
           <Grid container>
             <Grid item xs={12}>
-              <Grid item xs={12}>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Купить авто
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Обмен авто
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Онлайн оценка авто
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Предпродажная подготовка
                 </Link>
-              </Grid>
+              </Box>
             </Grid>
           </Grid>
         </AccordionDetails>
@@ -90,27 +103,31 @@ function FooterMobileMenu() {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2bh-content"
           id="panel2bh-header"
+          classes={{
+            content: classes.summaryExpanded,
+            root: classes.summaryRoot,
+          }}
         >
           <Typography className={classes.heading}>Продать</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Grid container>
             <Grid item xs={12}>
-              <Grid item xs={12}>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Продажа через нас
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Выкуп авто
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Trade-in / Обмен авто
                 </Link>
-              </Grid>
+              </Box>
             </Grid>
           </Grid>
         </AccordionDetails>
@@ -125,32 +142,36 @@ function FooterMobileMenu() {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel3bh-content"
           id="panel3bh-header"
+          classes={{
+            content: classes.summaryExpanded,
+            root: classes.summaryRoot,
+          }}
         >
           <Typography className={classes.heading}>Автокредит</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Grid container>
             <Grid item xs={12}>
-              <Grid item xs={12}>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Кредит без взноса
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Кредит с первым взносом
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Обмен с доплатой в кредит
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Онлайн заявка на кредит
                 </Link>
-              </Grid>
+              </Box>
             </Grid>
           </Grid>
         </AccordionDetails>
@@ -165,42 +186,46 @@ function FooterMobileMenu() {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel4bh-content"
           id="panel4bh-header"
+          classes={{
+            content: classes.summaryExpanded,
+            root: classes.summaryRoot,
+          }}
         >
           <Typography className={classes.heading}>Наш салон</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Grid container>
             <Grid item xs={12}>
-              <Grid item xs={12}>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   О компании
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Контакты
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Вакансии
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Новости
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Инвесторам
                 </Link>
-              </Grid>
-              <Grid item xs={12}>
+              </Box>
+              <Box pb={1}>
                 <Link href="/" color="inherit">
                   Наша команда
                 </Link>
-              </Grid>
+              </Box>
             </Grid>
           </Grid>
         </AccordionDetails>

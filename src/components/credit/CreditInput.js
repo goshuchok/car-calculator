@@ -75,7 +75,7 @@ function CreditInput() {
             </MenuItem>
           ))}
         </TextField>
-        <p>werwerwer {brandCar}</p>
+        <p>brand: {brandCar}</p>
 
         {/* <p>search : {search.result}</p> */}
 
@@ -89,13 +89,13 @@ function CreditInput() {
             native: true,
           }}
           variant="outlined"
-        >
+          >
           {brandModel.map((option) => (
             <option key={option.model} value={option.model}>
-              {brandCar}
+            {brandCar}
             </option>
-          ))}
-        </TextField> */}
+            ))}
+          </TextField> */}
         <TextField
           id="outlined-select-currency"
           select
@@ -111,6 +111,7 @@ function CreditInput() {
             </MenuItem>
           ))}
         </TextField>
+        <p>model: {modelCar}</p>
         {/* <TextField
           id="outlined-select-currency"
           select

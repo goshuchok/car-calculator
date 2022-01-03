@@ -6,7 +6,7 @@ function FormSubmit() {
     <Grid
       container
       direction="row"
-      justifyContent="space-around"
+      // justifyContent="space-around"
       alignItems="center"
       spacing={4}
     >
@@ -16,7 +16,14 @@ function FormSubmit() {
           данных
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={6}>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        container
+        direction="row"
+        justifyContent="flex-end"
+      >
         <Button variant="contained" color="primary">
           Primary
         </Button>
