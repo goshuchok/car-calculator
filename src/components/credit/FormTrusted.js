@@ -11,7 +11,7 @@ import React from 'react';
 function FormTrusted() {
   return (
     <div>
-      <h4 className="borrower_information">Доверенные лица</h4>
+      <h4 className="trusted_persons">Доверенные лица</h4>
       <form>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6}>
