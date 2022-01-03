@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMarksAction } from '../../store/actions/marksAction';
 import { getModelAction } from '../../store/actions/modelAction';
 import { getSearchAction } from '../../store/actions/searchAction';
+import { getUniqueAction } from '../../store/actions/uniqueAction';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,12 +40,14 @@ function CreditInput() {
   const { search } = useSelector((state) => state.searchData);
   const { marks } = useSelector((state) => state.marksData);
   const { model } = useSelector((state) => state.modelData);
+  const { unique } = useSelector((state) => state.uniqueData);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getSearchAction());
     dispatch(getMarksAction());
     dispatch(getModelAction());
+    dispatch(getUniqueAction());
     // setSearchCar((old) => [...old, search]);
     // console.log('setSearch', setSearchCar());
   }, [dispatch]);
@@ -52,6 +55,7 @@ function CreditInput() {
   console.log('search ', search);
   console.log('marks ', marks);
   console.log('model ', model);
+  console.log('unique ', unique);
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
