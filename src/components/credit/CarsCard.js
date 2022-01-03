@@ -11,8 +11,9 @@ import {
   Typography,
   Grid,
   Checkbox,
+  CircularProgress,
 } from '@material-ui/core';
-import car from '../../images/car.png';
+// import car from '../../images/car.png';
 import shield from '../../images/shield.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUniqueAction } from '../../store/actions/uniqueAction';
@@ -25,13 +26,21 @@ function CarsCard({ carApi, handleDelete }) {
   }, []);
   // console.log('unique ', unique);
   // const car = unique.photoData?.all?.shift().toString();
+  const car = unique.photoData?.seoLinkB;
   return (
     <div>
       <Card>
         {/* <CardHeader title={carApi.name} subheader={carApi.value} /> */}
 
         <CardActionArea>
-          <CardMedia style={{ height: 0, paddingTop: '56.25%' }} image={car} />
+          {car ? (
+            <CardMedia
+              style={{ height: 0, paddingTop: '56.25%' }}
+              image={car}
+            />
+          ) : (
+            <CircularProgress />
+          )}
           {/* <CardMedia>
             <img src={'https://developers.ria.com' + car} alt="car" />
           </CardMedia> */}

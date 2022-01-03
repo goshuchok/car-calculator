@@ -50,9 +50,9 @@ function CreditInput() {
     // console.log('setSearch', setSearchCar());
   }, [dispatch]);
 
-  console.log('search ', search);
-  console.log('marks ', marks);
-  console.log('model ', model);
+  // console.log('search ', search);
+  // console.log('marks ', marks);
+  // console.log('model ', model);
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
