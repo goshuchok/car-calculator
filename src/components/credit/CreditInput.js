@@ -7,25 +7,6 @@ import { getMarksAction } from '../../store/actions/marksAction';
 import { getModelAction } from '../../store/actions/modelAction';
 import { getSearchAction } from '../../store/actions/searchAction';
 
-// const brandModel = [
-//   {
-//     brand: 'Hyundai',
-//     model: 'Solaris',
-//   },
-//   {
-//     brand: 'Volkswagen',
-//     model: 'GOLF',
-//   },
-//   {
-//     brand: 'Ford',
-//     model: 'Focus',
-//   },
-//   {
-//     brand: 'Skoda',
-//     model: 'Octavia',
-//   },
-// ];
-
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -37,12 +18,17 @@ const useStyles = makeStyles((theme) => ({
 
 function CreditInput() {
   const classes = useStyles();
+
+  const [searchCar, setSearchCar] = useState([]);
+
   const [brandCar, setBrandCar] = useState([]);
+
   const [modelCar, setModelCar] = useState([]);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  // };
+  const handleChangeSearch = (event) => {
+    setSearchCar(event.target.value);
+  };
+
   const handleChangeBrand = (event) => {
     setBrandCar(event.target.value);
   };
@@ -53,26 +39,22 @@ function CreditInput() {
   const { search } = useSelector((state) => state.searchData);
   const { marks } = useSelector((state) => state.marksData);
   const { model } = useSelector((state) => state.modelData);
-  // console.log('model', model);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getSearchAction());
-  }, [dispatch]);
-  useEffect(() => {
     dispatch(getMarksAction());
-  }, [dispatch]);
-  useEffect(() => {
     dispatch(getModelAction());
+    // setSearchCar((old) => [...old, search]);
+    // console.log('setSearch', setSearchCar());
   }, [dispatch]);
-  console.log('search', search.result);
+
+  console.log('search ', search);
+  console.log('marks ', marks);
+  console.log('model ', model);
 
   return (
-    <form
-      className={classes.root}
-      noValidate
-      autoComplete="off"
-      // onSubmit={handleSubmit}
-    >
+    <form className={classes.root} noValidate autoComplete="off">
       <div>
         <TextField
           id="outlined-select-currency"
@@ -90,6 +72,9 @@ function CreditInput() {
           ))}
         </TextField>
         <p>werwerwer {brandCar}</p>
+
+        {/* <p>search : {search.result}</p> */}
+
         {/* <TextField
           id="outlined-select-currency-native"
           select
@@ -111,7 +96,7 @@ function CreditInput() {
           id="outlined-select-currency"
           select
           label="Select"
-          // value={brandCar}
+          // value={modelCar}
           defaultValue=""
           onChange={handleChangeModel}
           variant="filled"
@@ -122,6 +107,31 @@ function CreditInput() {
             </MenuItem>
           ))}
         </TextField>
+        {/* <TextField
+          id="outlined-select-currency"
+          select
+          label="Search"
+          value={searchCar}
+          defaultValue="searchCar"
+          onChange={handleChangeSearch}
+          variant="filled"
+          SelectProps={{
+            multiple: true,
+            value: [],
+          }}
+        >
+          {search.map((ser, id) => (
+            <MenuItem key={id} value={ser.id}>
+              {ser.id}
+            </MenuItem>
+          ))}
+        </TextField> */}
+
+        {/* {search.search_result_common?.map((ser) => (
+          <ul key={ser}>
+            <li>{ser.type}</li>
+          </ul>
+        ))} */}
       </div>
     </form>
   );

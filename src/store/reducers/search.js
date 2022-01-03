@@ -10,6 +10,8 @@ const reducer = (state = initialState, action) => {
     case GET_SEARCH_SUCCESS:
       return {
         ...state,
+        // search: [...state.search, action.payload],
+        // search: [action.payload],
         search: action.payload,
         searchFetchError: false,
       };
