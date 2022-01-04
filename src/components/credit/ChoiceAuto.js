@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CarsCard from './CarsCard';
 import CreditInput from './CreditInput';
@@ -14,6 +14,13 @@ function ChoiceAuto() {
     // dispatch(getMarksAction());
     dispatch(getModelAction());
   }, []);
+
+  const [selected, setSelected] = useState(false);
+
+  const handleSelected = () => {
+    selected ? setSelected(false) : setSelected(true);
+  };
+
   return (
     <div>
       <Container>
@@ -35,7 +42,11 @@ function ChoiceAuto() {
         </Grid> */}
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={4}>
-            <CarsCard />
+            <CarsCard
+              selected={selected}
+              handleSelected={handleSelected}
+              setSelected={setSelected}
+            />
           </Grid>
         </Grid>
       </Container>

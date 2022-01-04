@@ -12,12 +12,20 @@ import {
   Grid,
   Checkbox,
   CircularProgress,
+  FormControlLabel,
 } from '@material-ui/core';
 import shield from '../../images/shield.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUniqueAction } from '../../store/actions/uniqueAction';
 
-function CarsCard({ carApi, handleDelete }) {
+function CarsCard({
+  carApi,
+  handleDelete,
+  selected,
+  handleSelected,
+  btnClass,
+  setBtnClass,
+}) {
   const { unique } = useSelector((state) => state.uniqueData);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -38,43 +46,43 @@ function CarsCard({ carApi, handleDelete }) {
             <CircularProgress />
           )}
         </CardActionArea>
-        <CardActionArea>
+        <CardActionArea className={selected ? 'selected clicked' : 'selected'}>
           <CardContent>
-            <Typography>
+            <Typography style={{ color: '#949494' }}>
               {unique.autoData?.year} год / {unique.autoData?.gearboxName}
             </Typography>
-            <Typography>
+            <p className="car_name clicked">
               {unique.markName} {unique.modelName} {unique.autoData?.year} года
-            </Typography>
+            </p>
             <Grid container>
               <Grid item sm={6}>
-                <Typography>{unique.UAH} ₽</Typography>
+                <p className="price_black">{unique.UAH} ₽</p>
               </Grid>
               <Grid item sm={6}>
-                <Typography>от 15 000 Р / мес.</Typography>
+                <p className="month_black">от 15 000 Р / мес.</p>
               </Grid>
             </Grid>
             <Grid container>
               <Grid item sm={6}>
-                <Typography>
+                <p className="price_blue">
                   {unique.UAH} ₽<img src={shield} alt="shield" />
-                </Typography>
+                </p>
               </Grid>
               <Grid item sm={6}>
-                <Typography>от 15 000 Р / мес.</Typography>
+                <p className="month_blue">от 15 000 Р / мес.</p>
               </Grid>
             </Grid>
           </CardContent>
         </CardActionArea>
+        <Button color="secondary">
+          Выбрано это авто{' '}
+          <Checkbox inputProps={{ 'aria-label': 'primary checkbox' }} />
+        </Button>
         <CardActions>
-          <Button color="secondary">
-            Выбрано это авто{' '}
-            <Checkbox inputProps={{ 'aria-label': 'primary checkbox' }} />
-          </Button>
-          {/* <FormControlLabel
-            control={<Checkbox name="checkedA" />}
-            label="Secondary"
-          /> */}
+          <FormControlLabel
+            control={<Checkbox name="checkedA" onClick={handleSelected} />}
+            label=" Выбрано это авто"
+          />
         </CardActions>
       </Card>
     </div>
