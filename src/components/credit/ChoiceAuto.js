@@ -36,7 +36,11 @@ function ChoiceAuto() {
         {/* <Grid container spacing={3}>
           {model.map((carApi, id) => (
             <Grid item key={id} xs={12} md={6} lg={4}>
-              <CarsCard carApi={carApi} />
+              <CarsCard
+                selected={selected}
+                handleSelected={handleSelected}
+                setSelected={setSelected}
+              />
             </Grid>
           ))}
         </Grid> */}
