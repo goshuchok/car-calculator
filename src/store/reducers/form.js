@@ -61,6 +61,7 @@ const reducer = (state = initialState, action) => {
       console.log('--- Form submitted!! ---');
       return {
         ...state,
+
         message: 'Form submitted!!',
       };
     default:

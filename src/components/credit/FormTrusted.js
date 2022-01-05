@@ -9,6 +9,10 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSubmitAction } from '../../store/actions/formSubmitAction';
+import {
+  SET_TRUST_PERSON,
+  SET_TRUST_PHONE,
+} from '../../store/constants/formTypes';
 
 function FormTrusted() {
   const [trustPhone, setTrustPhone] = useState('');
@@ -20,13 +24,14 @@ function FormTrusted() {
     e.preventDefault();
     setSubmitAction();
   };
+
   useEffect(() => {
     dispatch({
-      type: 'SET_TRUST_PERSON',
+      type: SET_TRUST_PERSON,
       payload: trustPerson,
     });
     dispatch({
-      type: 'SET_TRUST_PHONE',
+      type: SET_TRUST_PHONE,
       payload: trustPhone,
     });
   });

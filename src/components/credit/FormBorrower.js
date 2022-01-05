@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Grid, TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { setSubmitAction } from '../../store/actions/formSubmitAction';
+import {
+  SET_ADDRESS,
+  SET_MOBILE_PHONE,
+  SET_NAME,
+  SET_WORK_PHONE,
+} from '../../store/constants/formTypes';
 
 function FormBorrower() {
   const [name, setName] = useState('');
@@ -18,19 +24,19 @@ function FormBorrower() {
 
   useEffect(() => {
     dispatch({
-      type: 'SET_NAME',
+      type: SET_NAME,
       payload: name,
     });
     dispatch({
-      type: 'SET_MOBILE_PHONE',
+      type: SET_MOBILE_PHONE,
       payload: mobilePhone,
     });
     dispatch({
-      type: 'SET_WORK_PHONE',
+      type: SET_WORK_PHONE,
       payload: workPhone,
     });
     dispatch({
-      type: 'SET_ADDRESS',
+      type: SET_ADDRESS,
       payload: address,
     });
   });
