@@ -1,6 +1,8 @@
 const initialState = {
-  formValues: '',
-  formPassword: '',
+  formName: '',
+  formMobilePhone: '',
+  formWorkPhone: '',
+  formAddress: '',
   formTrustPhone: '',
   formTrustPerson: '',
   message: '',
@@ -8,15 +10,25 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_FORMVALUES':
+    case 'SET_NAME':
       return {
         ...state,
-        formValues: action.payload,
+        formName: action.payload,
       };
-    case 'SET_PASSWORD':
+    case 'SET_MOBILE_PHONE':
       return {
         ...state,
-        formPassword: action.payload,
+        formMobilePhone: action.payload,
+      };
+    case 'SET_WORK_PHONE':
+      return {
+        ...state,
+        formWorkPhone: action.payload,
+      };
+    case 'SET_ADDRESS':
+      return {
+        ...state,
+        formAddress: action.payload,
       };
     case 'SET_TRUST_PHONE':
       return {
@@ -30,10 +42,13 @@ const reducer = (state = initialState, action) => {
       };
     case 'SUBMIT_FORM':
       console.log('--- Triggered Form submission ---');
-      console.log('Form Email - ', state.formValues);
-      console.log('Form Password - ', state.formPassword);
+      console.log('Form Name - ', state.formName);
+      console.log('Form Mobile Phone - ', state.formMobilePhone);
+      console.log('Form Work Phone - ', state.formWorkPhone);
+      console.log('Form Address - ', state.formAddress);
       console.log('Form Trust Person - ', state.formTrustPerson);
       console.log('Form Trust Phone - ', state.formTrustPhone);
+      console.log('--- Form submitted!! ---');
       return {
         ...state,
         message: 'Form submitted!!',
