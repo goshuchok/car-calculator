@@ -6,13 +6,43 @@ import {
   Select,
   TextField,
 } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 function FormTrusted() {
+  const [trustPhone, setTrustPhone] = useState('');
+  const [trustPerson, setTrustPerson] = useState('');
+
+  const dispatch = useDispatch();
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: 'SUBMIT_FORM',
+    });
+  };
+  useEffect(() => {
+    dispatch({
+      type: 'SET_TRUST_PERSON',
+      payload: trustPerson,
+    });
+    dispatch({
+      type: 'SET_TRUST_PHONE',
+      payload: trustPhone,
+    });
+  });
+
+  const handleInputChangePerson = (e) => {
+    setTrustPerson(e.target.value);
+  };
+  const handleInputChangePhone = (e) => {
+    setTrustPhone(e.target.value);
+  };
+
   return (
     <div>
       <h4 className="trusted_persons">Доверенные лица</h4>
-      <form>
+      <form onSubmit={submitForm}>
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -21,6 +51,8 @@ function FormTrusted() {
               variant="outlined"
               fullWidth={true}
               type="text"
+              value={trustPerson}
+              onChange={handleInputChangePerson}
             />
           </Grid>
           <Grid item xs={12} sm={3}>
@@ -30,6 +62,8 @@ function FormTrusted() {
               variant="outlined"
               fullWidth={true}
               type="tel"
+              value={trustPhone}
+              onChange={handleInputChangePhone}
             />
           </Grid>
           <Grid item xs={12} sm={3}>

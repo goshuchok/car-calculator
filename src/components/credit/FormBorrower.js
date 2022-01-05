@@ -1,7 +1,12 @@
+import React, { useState } from 'react';
 import { Grid, TextField } from '@material-ui/core';
-import React from 'react';
 
 function FormBorrower() {
+  const [name, setName] = useState('');
+  const [mobilePhone, setMobilePhone] = useState('');
+  const [workPhone, setWorkPhone] = useState('');
+  const [address, setAddress] = useState('');
+
   return (
     <form>
       <Grid container spacing={4}>
@@ -12,6 +17,7 @@ function FormBorrower() {
             variant="filled"
             fullWidth={true}
             type="text"
+            value={name}
           />
         </Grid>
         <Grid item xs={12} sm={3}>
@@ -21,6 +27,7 @@ function FormBorrower() {
             variant="filled"
             fullWidth={true}
             type="tel"
+            value={mobilePhone}
           />
         </Grid>
         <Grid item xs={12} sm={3}>
@@ -30,6 +37,7 @@ function FormBorrower() {
             variant="filled"
             fullWidth={true}
             type="tel"
+            value={workPhone}
           />
         </Grid>
         <Grid item xs={12} sm={12}>
@@ -39,6 +47,7 @@ function FormBorrower() {
             variant="filled"
             fullWidth={true}
             type="text"
+            value={address}
           />
         </Grid>
       </Grid>

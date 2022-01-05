@@ -1,7 +1,9 @@
-import { Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
+import { Button, Grid, Typography } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 
 function FormSubmit() {
+  const dispatch = useDispatch();
   return (
     <Grid
       container
@@ -24,7 +26,11 @@ function FormSubmit() {
         direction="row"
         justifyContent="flex-end"
       >
-        <Button variant="contained" color="primary">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={(e) => dispatch({ type: 'SUBMIT_FORM' })}
+        >
           Primary
         </Button>
       </Grid>
