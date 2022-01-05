@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import { setSubmitAction } from '../../store/actions/formSubmitAction';
 
 function FormBorrower() {
   const [name, setName] = useState('');
@@ -12,9 +13,7 @@ function FormBorrower() {
 
   const submitForm = (e) => {
     e.preventDefault();
-    dispatch({
-      type: 'SUBMIT_FORM',
-    });
+    setSubmitAction();
   };
 
   useEffect(() => {

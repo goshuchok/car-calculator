@@ -1,3 +1,13 @@
+import {
+  SET_ADDRESS,
+  SET_MOBILE_PHONE,
+  SET_NAME,
+  SET_TRUST_PERSON,
+  SET_TRUST_PHONE,
+  SET_WORK_PHONE,
+  SUBMIT_FORM,
+} from '../constants/formTypes';
+
 const initialState = {
   formName: '',
   formMobilePhone: '',
@@ -10,37 +20,37 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_NAME':
+    case SET_NAME:
       return {
         ...state,
         formName: action.payload,
       };
-    case 'SET_MOBILE_PHONE':
+    case SET_MOBILE_PHONE:
       return {
         ...state,
         formMobilePhone: action.payload,
       };
-    case 'SET_WORK_PHONE':
+    case SET_WORK_PHONE:
       return {
         ...state,
         formWorkPhone: action.payload,
       };
-    case 'SET_ADDRESS':
+    case SET_ADDRESS:
       return {
         ...state,
         formAddress: action.payload,
       };
-    case 'SET_TRUST_PHONE':
+    case SET_TRUST_PHONE:
       return {
         ...state,
         formTrustPhone: action.payload,
       };
-    case 'SET_TRUST_PERSON':
+    case SET_TRUST_PERSON:
       return {
         ...state,
         formTrustPerson: action.payload,
       };
-    case 'SUBMIT_FORM':
+    case SUBMIT_FORM:
       console.log('--- Triggered Form submission ---');
       console.log('Form Name - ', state.formName);
       console.log('Form Mobile Phone - ', state.formMobilePhone);
