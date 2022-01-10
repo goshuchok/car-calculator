@@ -1,5 +1,5 @@
+import React from 'react';
 import { Box, Grid, Slider, TextField, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
 
 function calcFormat(value) {
   let currentValue = value;
@@ -14,17 +14,16 @@ function calcFormat(value) {
   return currentValue;
 }
 
-function SliderTerm() {
-  const [value, setValue] = useState(0);
+function SliderTerm({ valueMonth, setValueMonth }) {
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setValueMonth(newValue);
   };
 
   return (
     <Box>
       <TextField
         label="Желаемый срок кредита"
-        value={`${calcFormat(value)}`}
+        value={`${calcFormat(valueMonth)}`}
         size="medium"
         fullWidth
         readOnly

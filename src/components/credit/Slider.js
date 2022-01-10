@@ -6,18 +6,19 @@ import SliderTerm from './SliderTerm';
 
 function Slider() {
   const [value, setValue] = useState('30');
+  const [valueMonth, setValueMonth] = useState(0);
   return (
     <Box px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 10 }}>
       <Container maxWidth="lg">
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6}>
-            <SliderTerm />
+            <SliderTerm valueMonth={valueMonth} setValueMonth={setValueMonth} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <SliderContribution value={value} setValue={setValue} />
           </Grid>
           <Grid item xs={12} sm={12}>
-            <SliderCalculation value={value} />
+            <SliderCalculation value={value} valueMonth={valueMonth} />
           </Grid>
         </Grid>
       </Container>

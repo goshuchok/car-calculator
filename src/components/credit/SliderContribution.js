@@ -1,5 +1,5 @@
+import React from 'react';
 import { Box, Grid, Slider, TextField, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
 
 function SliderContribution({ value, setValue }) {
   const handleChange = (event, newValue) => {

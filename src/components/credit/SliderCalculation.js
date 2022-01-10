@@ -2,14 +2,21 @@ import { Box, Container, Grid } from '@material-ui/core';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-function SliderCalculation({ value }) {
+function SliderCalculation({ value, valueMonth }) {
   const { unique } = useSelector((state) => state.uniqueData);
 
   function calculate() {
-    const totalPrice = Number(`${unique.UAH}`) - value;
-    return totalPrice;
+    const totalPrice = Number(`${unique.UAH}`);
+    const firstPrice = parseInt(totalPrice * (value / 100));
+    const creditSum = totalPrice - firstPrice;
+    const creditMonth = valueMonth;
+    console.log(creditSum);
+    console.log(creditMonth);
+    const authenticPay = Math.floor(
+      creditSum * (17 / 100 / (1 + 17 / 100) - creditMonth - 1) * -1
+    ).toFixed(2);
+    return authenticPay;
   }
-  console.log(value);
 
   return (
     <Container>
@@ -21,7 +28,7 @@ function SliderCalculation({ value }) {
           </Grid>
           <Grid item lg={3} md={3} sm={6}>
             <p className="car_cost">Ежемесячный платёж</p>
-            <p className="car_sum">{calculate()} 15 000 ₽</p>
+            <p className="car_sum">{calculate()} ₽</p>
           </Grid>
 
           <Grid item lg={6} md={6} sm={12} />
