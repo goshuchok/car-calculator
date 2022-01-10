@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { API_URL } from '../config';
-
-const key = 'xMjRSheumFDOR3KhqDuV81Ytp9OZSAhRpQRsZo5A';
+import { key } from './marksApi';
 
 const UNIQUE_ID = 19050985;
 export const getUnique = () => {
