@@ -1,8 +1,7 @@
 import { Box, Grid, Slider, TextField, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 
-function SliderContribution() {
-  const [value, setValue] = useState('30');
+function SliderContribution({ value, setValue }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -26,6 +25,7 @@ function SliderContribution() {
         aria-labelledby="continuous-slider"
         defaultValue={30}
         max={50}
+        id="sliderContribution"
       />
       <Grid container>
         <Grid item xs={6} sm={6}>
