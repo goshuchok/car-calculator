@@ -1,8 +1,8 @@
 import { getModel } from '../api/modelApi';
 import { GET_MODEL_ERROR, GET_MODEL_SUCCESS } from '../constants/modelTypes';
 
-export const getModelAction = () => (dispatch) => {
-  getModel()
+export const getModelAction = (markId) => (dispatch) => {
+  getModel(markId)
     .then((response) =>
       dispatch({
         type: GET_MODEL_SUCCESS,

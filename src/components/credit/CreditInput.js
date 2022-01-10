@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMarksAction } from '../../store/actions/marksAction';
 import { getModelAction } from '../../store/actions/modelAction';
-import { getSearchAction } from '../../store/actions/searchAction';
+// import { getSearchAction } from '../../store/actions/searchAction';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,40 +19,41 @@ const useStyles = makeStyles((theme) => ({
 function CreditInput() {
   const classes = useStyles();
 
-  const [searchCar, setSearchCar] = useState([]);
+  // const [searchCar, setSearchCar] = useState([]);
 
   const [brandCar, setBrandCar] = useState([]);
 
   const [modelCar, setModelCar] = useState([]);
 
-  const handleChangeSearch = (event) => {
-    setSearchCar(event.target.value);
-  };
-
-  const handleChangeBrand = (event) => {
-    setBrandCar(event.target.value);
-  };
-  const handleChangeModel = (event) => {
-    setModelCar(event.target.value);
-  };
-
-  const { search } = useSelector((state) => state.searchData);
+  // const { search } = useSelector((state) => state.searchData);
   const { marks } = useSelector((state) => state.marksData);
   const { model } = useSelector((state) => state.modelData);
 
   const dispatch = useDispatch();
+  // useEffect(()=>{
+  //    dispatch(getSearchAction());
+  // },[dispatch])
   useEffect(() => {
-    dispatch(getSearchAction());
     dispatch(getMarksAction());
-    dispatch(getModelAction());
+  }, []);
 
-    // setSearchCar((old) => [...old, search]);
-    // console.log('setSearch', setSearchCar());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getModelAction());
+  // }, []);
 
-  // console.log('search ', search);
-  // console.log('marks ', marks);
-  // console.log('model ', model);
+  // console.log(brandCar);
+
+  // const handleChangeSearch = (event) => {
+  //   setSearchCar(event.target.value);
+  // };
+
+  const handleChangeBrand = (event) => {
+    setBrandCar(event.target.value);
+    dispatch(getModelAction(event.target.value));
+  };
+  const handleChangeModel = (event) => {
+    setModelCar(event.target.value);
+  };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -61,21 +62,19 @@ function CreditInput() {
           id="outlined-select-currency"
           select
           label="Select"
-          // value={brandCar}
+          value={brandCar}
           defaultValue=""
           onChange={handleChangeBrand}
           variant="filled"
         >
-          {marks.map((mark, id) => (
-            <MenuItem key={id} value={mark.name}>
+          {marks.map((mark) => (
+            <MenuItem key={mark.value} value={mark.value}>
               {mark.name}
             </MenuItem>
           ))}
         </TextField>
-        <p>brand: {brandCar}</p>
-        <p></p>
-        <p></p>
-        <p></p>
+        {/* <p>brand: {brandCar}</p> */}
+
         {/* <p>search : {search.result}</p> */}
         {/* <TextField
           id="outlined-select-currency-native"
@@ -109,7 +108,7 @@ function CreditInput() {
             </MenuItem>
           ))}
         </TextField>
-        <p>model: {modelCar}</p>
+        {/* <p>model: {modelCar}</p> */}
         {/* <TextField
           id="outlined-select-currency"
           select

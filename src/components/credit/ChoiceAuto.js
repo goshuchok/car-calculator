@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import CarsCard from './CarsCard';
 import CreditInput from './CreditInput';
 import { Container, Grid } from '@material-ui/core';
-import { getMarksAction } from '../../store/actions/marksAction';
-import { getModelAction } from '../../store/actions/modelAction';
+// import { getMarksAction } from '../../store/actions/marksAction';
+// import { getModelAction } from '../../store/actions/modelAction';
 
 function ChoiceAuto() {
-  const { marks } = useSelector((state) => state.marksData);
+  // const { marks } = useSelector((state) => state.marksData);
   const { model } = useSelector((state) => state.modelData);
   const dispatch = useDispatch();
-  useEffect(() => {
-    // dispatch(getMarksAction());
-    dispatch(getModelAction());
-  }, []);
+  // useEffect(() => {
+  //   // dispatch(getMarksAction());
+  //   dispatch(getModelAction());
+  // }, []);
 
   const [selected, setSelected] = useState(false);
 
@@ -33,8 +33,8 @@ function ChoiceAuto() {
             </Grid>
           ))}
         </Grid> */}
-        {/* <Grid container spacing={3}>
-          {model.map((carApi, id) => (
+        <Grid container spacing={3}>
+          {model.map((id) => (
             <Grid item key={id} xs={12} md={6} lg={4}>
               <CarsCard
                 selected={selected}
@@ -43,8 +43,8 @@ function ChoiceAuto() {
               />
             </Grid>
           ))}
-        </Grid> */}
-        <Grid container spacing={3}>
+        </Grid>
+        {/* <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={4}>
             <CarsCard
               selected={selected}
@@ -52,7 +52,7 @@ function ChoiceAuto() {
               setSelected={setSelected}
             />
           </Grid>
-        </Grid>
+        </Grid> */}
       </Container>
     </div>
   );

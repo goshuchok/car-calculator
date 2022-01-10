@@ -1,8 +1,8 @@
 import { getUnique } from '../api/uniqueApi';
 import { GET_UNIQUE_ERROR, GET_UNIQUE_SUCCESS } from '../constants/uniqueTypes';
 
-export const getUniqueAction = () => (dispatch) => {
-  getUnique()
+export const getUniqueAction = (uniqueId) => (dispatch) => {
+  getUnique(uniqueId)
     .then((response) =>
       dispatch({
         type: GET_UNIQUE_SUCCESS,

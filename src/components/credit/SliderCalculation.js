@@ -9,9 +9,9 @@ function SliderCalculation({ value, valueMonth }) {
     const totalPrice = Number(`${unique.UAH}`);
     const firstPrice = parseInt(totalPrice * (value / 100));
     const creditSum = totalPrice - firstPrice;
-    const creditMonth = valueMonth;
-    console.log(creditSum);
-    console.log(creditMonth);
+    let creditMonth = valueMonth;
+    // console.log(creditSum);
+    // console.log(creditMonth);
     const authenticPay = Math.floor(
       creditSum * (17 / 100 / (1 + 17 / 100) - creditMonth - 1) * -1
     ).toFixed(2);

@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
 
 import {
-  CardHeader,
-  Button,
   CardMedia,
   CardContent,
-  CardActions,
   CardActionArea,
   Card,
   Typography,
@@ -32,7 +29,7 @@ function CarsCard({
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUniqueAction());
-  }, []);
+  }, [dispatch]);
 
   const car = unique.photoData?.seoLinkB;
   return (
