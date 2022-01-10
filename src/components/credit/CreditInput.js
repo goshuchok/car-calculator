@@ -19,33 +19,18 @@ const useStyles = makeStyles((theme) => ({
 function CreditInput() {
   const classes = useStyles();
 
-  // const [searchCar, setSearchCar] = useState([]);
-
   const [brandCar, setBrandCar] = useState([]);
 
   const [modelCar, setModelCar] = useState([]);
 
-  // const { search } = useSelector((state) => state.searchData);
   const { marks } = useSelector((state) => state.marksData);
   const { model } = useSelector((state) => state.modelData);
 
   const dispatch = useDispatch();
-  // useEffect(()=>{
-  //    dispatch(getSearchAction());
-  // },[dispatch])
+
   useEffect(() => {
     dispatch(getMarksAction());
   }, []);
-
-  // useEffect(() => {
-  //   dispatch(getModelAction());
-  // }, []);
-
-  // console.log(brandCar);
-
-  // const handleChangeSearch = (event) => {
-  //   setSearchCar(event.target.value);
-  // };
 
   const handleChangeBrand = (event) => {
     setBrandCar(event.target.value);
@@ -73,31 +58,12 @@ function CreditInput() {
             </MenuItem>
           ))}
         </TextField>
-        {/* <p>brand: {brandCar}</p> */}
 
-        {/* <p>search : {search.result}</p> */}
-        {/* <TextField
-          id="outlined-select-currency-native"
-          select
-          label="Native select"
-          value={modelCar}
-          onChange={handleChangeModel}
-          SelectProps={{
-            native: true,
-          }}
-          variant="outlined"
-          >
-          {brandModel.map((option) => (
-            <option key={option.model} value={option.model}>
-            {brandCar}
-            </option>
-            ))}
-          </TextField> */}
         <TextField
           id="outlined-select-currency"
           select
           label="Select"
-          // value={modelCar}
+          value={modelCar}
           defaultValue=""
           onChange={handleChangeModel}
           variant="filled"
@@ -108,31 +74,6 @@ function CreditInput() {
             </MenuItem>
           ))}
         </TextField>
-        {/* <p>model: {modelCar}</p> */}
-        {/* <TextField
-          id="outlined-select-currency"
-          select
-          label="Search"
-          value={searchCar}
-          defaultValue="searchCar"
-          onChange={handleChangeSearch}
-          variant="filled"
-          SelectProps={{
-            multiple: true,
-            value: [],
-          }}
-        >
-          {search.map((ser, id) => (
-            <MenuItem key={id} value={ser.id}>
-              {ser.id}
-            </MenuItem>
-          ))}
-        </TextField> */}
-        {/* {search.search_result_common?.map((ser) => (
-          <ul key={ser}>
-            <li>{ser.type}</li>
-          </ul>
-        ))} */}
       </div>
     </form>
   );

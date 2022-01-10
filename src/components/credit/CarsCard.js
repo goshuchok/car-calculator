@@ -17,14 +17,7 @@ import shield from '../../images/shield.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUniqueAction } from '../../store/actions/uniqueAction';
 
-function CarsCard({
-  carApi,
-  handleDelete,
-  selected,
-  handleSelected,
-  btnClass,
-  setBtnClass,
-}) {
+function CarsCard({ selected, handleSelected, carApi }) {
   const { unique } = useSelector((state) => state.uniqueData);
   const dispatch = useDispatch();
   useEffect(() => {
