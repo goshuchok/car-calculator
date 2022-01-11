@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   CardMedia,
@@ -17,80 +17,109 @@ import shield from '../../images/shield.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUniqueAction } from '../../store/actions/uniqueAction';
 
-function CarsCard({ selected, handleSelected, carApi }) {
+function CarsCard() {
+  const { marks } = useSelector((state) => state.marksData);
+  const { model } = useSelector((state) => state.modelData);
   const { unique } = useSelector((state) => state.uniqueData);
+
   const dispatch = useDispatch();
+  const [selected, setSelected] = useState(false);
+
+  console.log('marks', marks);
+  console.log('model', model);
+  console.log('unique', unique);
+
+  const handleSelected = () => {
+    selected ? setSelected(false) : setSelected(true);
+  };
+
   useEffect(() => {
     dispatch(getUniqueAction());
-  }, [dispatch]);
+  }, []);
 
-  const car = unique.photoData?.seoLinkB;
+  const carImage = unique.photoData?.seoLinkB;
   return (
     <div>
-      <Card>
-        <CardActionArea>
-          {car ? (
-            <CardMedia
-              style={{ height: 0, paddingTop: '56.25%' }}
-              image={car}
-            />
-          ) : (
-            <CircularProgress />
-          )}
-        </CardActionArea>
-        <CardActionArea className={selected ? 'selected clicked' : 'selected'}>
-          <CardContent>
-            <Typography style={{ color: '#949494', paddingBottom: 10 }}>
-              {unique.autoData?.year} год / {unique.autoData?.gearboxName}
-            </Typography>
-            <p className="car_name clicked">
-              {unique.markName} {unique.modelName} {unique.autoData?.year} года
-            </p>
-            <Grid
-              container
-              className="card_prices"
-              justifyContent="space-between"
-            >
-              <Grid item sm={6}>
-                <p className="price_black">{unique.UAH} ₽</p>
-              </Grid>
-              <Grid item sm={6} className="align_text">
-                <p className="month_black">от 15 000 Р / мес.</p>
-              </Grid>
-            </Grid>
-            <Grid
-              container
-              className="card_prices"
-              justifyContent="space-between"
-            >
-              <Grid item sm={6}>
-                <Grid>
-                  <p className="price_blue">{unique.UAH} ₽</p>
-                  <img src={shield} alt="shield" />
-                </Grid>
-              </Grid>
-              <Grid item sm={6} className="align_text">
-                <p className="month_blue">от 15 000 Р / мес.</p>
-              </Grid>
-            </Grid>
-            <Grid container className="card_controls">
-              <FormControlLabel
-                style={{ margin: 0 }}
-                control={
-                  <Checkbox
-                    icon={<CircleUnchecked />}
-                    checkedIcon={<CircleChecked className="checked_circle" />}
-                    onClick={handleSelected}
+      {unique.length === 0 ? (
+        <Typography>Cars not found</Typography>
+      ) : (
+        <Typography>Cars {unique.length}: auto</Typography>
+      )}
+      <Grid container spacing={3}>
+        {unique.map((car) => (
+          <Grid key={car.userId} item xs={12} md={6} lg={4}>
+            <Card>
+              <CardActionArea>
+                {carImage ? (
+                  <CardMedia
+                    style={{ height: 0, paddingTop: '56.25%' }}
+                    image={carImage}
                   />
-                }
-                labelPlacement="start"
-                label=" Выбрано это авто"
-                className="form_control"
-              />
-            </Grid>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+                ) : (
+                  <CircularProgress />
+                )}
+              </CardActionArea>
+              <CardActionArea
+                className={selected ? 'selected clicked' : 'selected'}
+              >
+                <CardContent>
+                  <Typography style={{ color: '#949494', paddingBottom: 10 }}>
+                    {unique.autoData?.year} год / {unique.autoData?.gearboxName}
+                  </Typography>
+                  <p className="car_name clicked">
+                    {unique.markName} {unique.modelName} {unique.autoData?.year}{' '}
+                    года
+                  </p>
+                  <Grid
+                    container
+                    className="card_prices"
+                    justifyContent="space-between"
+                  >
+                    <Grid item sm={6}>
+                      <p className="price_black">{unique.UAH} ₽</p>
+                    </Grid>
+                    <Grid item sm={6} className="align_text">
+                      <p className="month_black">от 15 000 Р / мес.</p>
+                    </Grid>
+                  </Grid>
+                  <Grid
+                    container
+                    className="card_prices"
+                    justifyContent="space-between"
+                  >
+                    <Grid item sm={6}>
+                      <Grid>
+                        <p className="price_blue">{unique.UAH} ₽</p>
+                        <img src={shield} alt="shield" />
+                      </Grid>
+                    </Grid>
+                    <Grid item sm={6} className="align_text">
+                      <p className="month_blue">от 15 000 Р / мес.</p>
+                    </Grid>
+                  </Grid>
+                  <Grid container className="card_controls">
+                    <FormControlLabel
+                      style={{ margin: 0 }}
+                      control={
+                        <Checkbox
+                          icon={<CircleUnchecked />}
+                          checkedIcon={
+                            <CircleChecked className="checked_circle" />
+                          }
+                          onClick={handleSelected}
+                        />
+                      }
+                      labelPlacement="start"
+                      label=" Выбрано это авто"
+                      className="form_control"
+                    />
+                  </Grid>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 }

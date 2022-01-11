@@ -68,8 +68,8 @@ function CreditInput() {
           onChange={handleChangeModel}
           variant="filled"
         >
-          {model.map((model, id) => (
-            <MenuItem key={id} value={model.name}>
+          {model.map((model) => (
+            <MenuItem key={model.value} value={model.value}>
               {model.name}
             </MenuItem>
           ))}
