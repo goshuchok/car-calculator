@@ -10,32 +10,24 @@ import {
   Checkbox,
   CircularProgress,
   FormControlLabel,
+  MenuItem,
 } from '@material-ui/core';
 import CircleChecked from '@material-ui/icons/CheckCircleOutline';
 import CircleUnchecked from '@material-ui/icons/RadioButtonUnchecked';
 import shield from '../../images/shield.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUniqueAction } from '../../store/actions/uniqueAction';
+import { getSearchAction } from '../../store/actions/searchAction';
 
 function CarsCard() {
-  const { marks } = useSelector((state) => state.marksData);
-  const { model } = useSelector((state) => state.modelData);
   const { unique } = useSelector((state) => state.uniqueData);
 
-  const dispatch = useDispatch();
   const [selected, setSelected] = useState(false);
-
-  console.log('marks', marks);
-  console.log('model', model);
-  console.log('unique', unique);
-
   const handleSelected = () => {
     selected ? setSelected(false) : setSelected(true);
   };
 
-  useEffect(() => {
-    dispatch(getUniqueAction());
-  }, []);
+  console.log('unique', unique);
 
   const carImage = unique.photoData?.seoLinkB;
   return (
@@ -45,6 +37,7 @@ function CarsCard() {
       ) : (
         <Typography>Cars {unique.length}: auto</Typography>
       )}
+
       <Grid container spacing={3}>
         {unique.map((car) => (
           <Grid key={car.userId} item xs={12} md={6} lg={4}>

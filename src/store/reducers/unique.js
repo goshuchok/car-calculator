@@ -10,7 +10,7 @@ const reducer = (state = initialState, action) => {
     case GET_UNIQUE_SUCCESS:
       return {
         ...state,
-        unique: action.payload,
+        unique: [...state.unique, action.payload],
         uniqueFetchError: false,
       };
 

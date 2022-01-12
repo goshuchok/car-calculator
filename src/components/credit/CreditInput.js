@@ -5,7 +5,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMarksAction } from '../../store/actions/marksAction';
 import { getModelAction } from '../../store/actions/modelAction';
-// import { getSearchAction } from '../../store/actions/searchAction';
+import { getUniqueAction } from '../../store/actions/uniqueAction';
+import { getSearchAction } from '../../store/actions/searchAction';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +39,14 @@ function CreditInput() {
   };
   const handleChangeModel = (event) => {
     setModelCar(event.target.value);
+    let data = { markaId: brandCar, modelId: event.target.value };
+    dispatch(getSearchAction(data)).then((response) => {
+      let ids = response.payload.result.search_result.ids;
+
+      ids.map((id) => {
+        dispatch(getUniqueAction(id));
+      });
+    });
   };
 
   return (
