@@ -5,6 +5,9 @@ import { useSelector } from 'react-redux';
 function SliderCalculation({ value, valueMonth }) {
   const { unique } = useSelector((state) => state.uniqueData);
 
+  console.log('cash', Number(`${unique.UAH}`) ?? 0);
+  console.log('cash', unique.UAH);
+
   function calculate() {
     const totalPrice = Number(`${unique.UAH}`);
     const firstPrice = parseInt(totalPrice * (value / 100));

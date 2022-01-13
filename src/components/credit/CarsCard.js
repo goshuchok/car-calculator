@@ -28,7 +28,7 @@ function CarsCard() {
     selected ? setSelected(false) : setSelected(true);
   };
 
-  console.log('unique', unique);
+  // console.log('unique', unique);
 
   const carImage = unique.photoData?.seoLinkSX ?? no_image;
   return (

@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Grid, Slider, TextField, Typography } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getPercentOff } from '../../store/actions/calculatorAction';
 
-function SliderContribution({ value, setValue }) {
+function SliderContribution() {
+  const [value, setValue] = useState('30');
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPercentOff(value));
+  }, [dispatch, value]);
+
+  console.log(value);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

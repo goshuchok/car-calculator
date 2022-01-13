@@ -12,10 +12,10 @@ function Slider() {
       <Container maxWidth="lg">
         <Grid container spacing={5}>
           <Grid item xs={12} sm={6}>
-            <SliderTerm valueMonth={valueMonth} setValueMonth={setValueMonth} />
+            <SliderTerm />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <SliderContribution value={value} setValue={setValue} />
+            <SliderContribution />
           </Grid>
           <Grid item xs={12} sm={12}>
             <SliderCalculation value={value} valueMonth={valueMonth} />

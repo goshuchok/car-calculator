@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Grid, Slider, TextField, Typography } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { getMonths } from '../../store/actions/calculatorAction';
 
 function calcFormat(value) {
   let currentValue = value;
@@ -14,16 +16,26 @@ function calcFormat(value) {
   return currentValue;
 }
 
-function SliderTerm({ valueMonth, setValueMonth }) {
+function SliderTerm() {
+  const [value, setValue] = useState(0);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMonths(calcFormat(value)));
+  }, [dispatch, value]);
+
   const handleChange = (event, newValue) => {
-    setValueMonth(newValue);
+    setValue(newValue);
   };
+
+  console.log(calcFormat(value));
 
   return (
     <Box>
       <TextField
         label="Желаемый срок кредита"
-        value={`${calcFormat(valueMonth)}`}
+        value={`${calcFormat(value)}`}
         size="medium"
         fullWidth
         readOnly
