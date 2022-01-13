@@ -15,6 +15,7 @@ import {
 import CircleChecked from '@material-ui/icons/CheckCircleOutline';
 import CircleUnchecked from '@material-ui/icons/RadioButtonUnchecked';
 import shield from '../../images/shield.png';
+import no_image from '../../images/no_image.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUniqueAction } from '../../store/actions/uniqueAction';
 import { getSearchAction } from '../../store/actions/searchAction';
@@ -29,7 +30,7 @@ function CarsCard() {
 
   console.log('unique', unique);
 
-  const carImage = unique.photoData?.seoLinkB;
+  const carImage = unique.photoData?.seoLinkSX ?? no_image;
   return (
     <div>
       {unique.length === 0 ? (
@@ -46,7 +47,7 @@ function CarsCard() {
                 {carImage ? (
                   <CardMedia
                     style={{ height: 0, paddingTop: '56.25%' }}
-                    image={carImage}
+                    image={car.photoData?.seoLinkF ?? no_image}
                   />
                 ) : (
                   <CircularProgress />
@@ -57,11 +58,10 @@ function CarsCard() {
               >
                 <CardContent>
                   <Typography style={{ color: '#949494', paddingBottom: 10 }}>
-                    {unique.autoData?.year} год / {unique.autoData?.gearboxName}
+                    {car.autoData?.year} год / {car.autoData?.gearboxName}
                   </Typography>
                   <p className="car_name clicked">
-                    {unique.markName} {unique.modelName} {unique.autoData?.year}{' '}
-                    года
+                    {car.markName} {car.modelName} {car.autoData?.year} года
                   </p>
                   <Grid
                     container
@@ -69,7 +69,7 @@ function CarsCard() {
                     justifyContent="space-between"
                   >
                     <Grid item sm={6}>
-                      <p className="price_black">{unique.UAH} ₽</p>
+                      <p className="price_black">{car.UAH} ₽</p>
                     </Grid>
                     <Grid item sm={6} className="align_text">
                       <p className="month_black">от 15 000 Р / мес.</p>
@@ -82,7 +82,7 @@ function CarsCard() {
                   >
                     <Grid item sm={6}>
                       <Grid>
-                        <p className="price_blue">{unique.UAH} ₽</p>
+                        <p className="price_blue">{car.UAH} ₽</p>
                         <img src={shield} alt="shield" />
                       </Grid>
                     </Grid>
