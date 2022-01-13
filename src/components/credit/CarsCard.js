@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import {
   CardMedia,
@@ -7,28 +7,22 @@ import {
   Card,
   Typography,
   Grid,
-  Checkbox,
   CircularProgress,
-  FormControlLabel,
-  MenuItem,
 } from '@material-ui/core';
-import CircleChecked from '@material-ui/icons/CheckCircleOutline';
-import CircleUnchecked from '@material-ui/icons/RadioButtonUnchecked';
+
 import shield from '../../images/shield.png';
 import no_image from '../../images/no_image.png';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUniqueAction } from '../../store/actions/uniqueAction';
-import { getSearchAction } from '../../store/actions/searchAction';
+import { useSelector } from 'react-redux';
+
+import CheckedCar from './CheckedCar';
 
 function CarsCard() {
   const { unique } = useSelector((state) => state.uniqueData);
+  const [selected, setSelected] = useState(true);
 
-  const [selected, setSelected] = useState(false);
   const handleSelected = () => {
     selected ? setSelected(false) : setSelected(true);
   };
-
-  // console.log('unique', unique);
 
   const carImage = unique.photoData?.seoLinkSX ?? no_image;
   return (
@@ -91,20 +85,10 @@ function CarsCard() {
                     </Grid>
                   </Grid>
                   <Grid container className="card_controls">
-                    <FormControlLabel
-                      style={{ margin: 0 }}
-                      control={
-                        <Checkbox
-                          icon={<CircleUnchecked />}
-                          checkedIcon={
-                            <CircleChecked className="checked_circle" />
-                          }
-                          onClick={handleSelected}
-                        />
-                      }
-                      labelPlacement="start"
-                      label=" Выбрано это авто"
-                      className="form_control"
+                    <CheckedCar
+                      price={car.UAH}
+                      // selected={selected}
+                      // handleSelected={handleSelected}
                     />
                   </Grid>
                 </CardContent>

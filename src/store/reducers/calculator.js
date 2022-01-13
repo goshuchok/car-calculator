@@ -1,8 +1,15 @@
-import { GET_MONTHS, GET_PERCENT_OFF } from '../constants/calculatorTypes';
+import {
+  FIRST_INSTALL,
+  GET_MONTHS,
+  GET_PERCENT_OFF,
+  MONTHS_PRICE,
+} from '../constants/calculatorTypes';
 
 const initialState = {
-  months: '',
-  percentOff: '',
+  months: 0,
+  percentOff: 0,
+  firstInstall: 0,
+  monthsPrice: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +23,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         percentOff: action.payload,
+      };
+    case MONTHS_PRICE:
+      return {
+        ...state,
+        monthsPrice: action.payload,
+      };
+    case FIRST_INSTALL:
+      return {
+        ...state,
+        firstInstall: action.payload,
       };
     default:
       return state;

@@ -22,14 +22,12 @@ function SliderTerm() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMonths(calcFormat(value)));
+    dispatch(getMonths(value));
   }, [dispatch, value]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  console.log(calcFormat(value));
 
   return (
     <Box>

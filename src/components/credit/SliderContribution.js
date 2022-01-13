@@ -13,8 +13,6 @@ function SliderContribution() {
     dispatch(getPercentOff(value));
   }, [dispatch, value]);
 
-  console.log(value);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

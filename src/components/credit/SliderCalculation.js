@@ -1,25 +1,35 @@
+import React, { useEffect } from 'react';
 import { Box, Container, Grid } from '@material-ui/core';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMonthsPrice } from '../../store/actions/calculatorAction';
 
-function SliderCalculation({ value, valueMonth }) {
-  const { unique } = useSelector((state) => state.uniqueData);
+import calculate from '../../store/calculate/index';
 
-  console.log('cash', Number(`${unique.UAH}`) ?? 0);
-  console.log('cash', unique.UAH);
+function SliderCalculation() {
+  const { months } = useSelector((state) => state.calculator);
+  const { monthsPrice } = useSelector((state) => state.calculator);
+  const { firstInstall } = useSelector((state) => state.calculator);
+  const { percentOff } = useSelector((state) => state.calculator);
 
-  function calculate() {
-    const totalPrice = Number(`${unique.UAH}`);
-    const firstPrice = parseInt(totalPrice * (value / 100));
-    const creditSum = totalPrice - firstPrice;
-    let creditMonth = valueMonth;
-    // console.log(creditSum);
-    // console.log(creditMonth);
-    const authenticPay = Math.floor(
-      creditSum * (17 / 100 / (1 + 17 / 100) - creditMonth - 1) * -1
-    ).toFixed(2);
-    return authenticPay;
-  }
+  console.log('months', months);
+  console.log('monthsPrice', monthsPrice);
+  console.log('firstInstall', firstInstall);
+  console.log('percentOff', percentOff);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMonthsPrice(calculate(firstInstall.price, months, percentOff)));
+  }, [dispatch, firstInstall.price, months, percentOff]);
+
+  const ifPayNaN = (value) => {
+    if (isNaN(value)) {
+      return 0;
+    }
+    return value.toFixed(0);
+  };
+
+  console.log('calculate', calculate(firstInstall.price, months, percentOff));
 
   return (
     <Container>
@@ -27,11 +37,11 @@ function SliderCalculation({ value, valueMonth }) {
         <Grid container direction="row" spacing={4}>
           <Grid item lg={3} md={3} sm={6}>
             <p className="car_cost">Стоимость авто</p>
-            <p className="car_sum">{unique.UAH} ₽</p>
+            <p className="car_sum">{firstInstall.price || 0} UA</p>
           </Grid>
           <Grid item lg={3} md={3} sm={6}>
             <p className="car_cost">Ежемесячный платёж</p>
-            <p className="car_sum">{calculate()} ₽</p>
+            <p className="car_sum">{ifPayNaN(monthsPrice)} UA</p>
           </Grid>
 
           <Grid item lg={6} md={6} sm={12} />
@@ -42,9 +52,3 @@ function SliderCalculation({ value, valueMonth }) {
 }
 
 export default SliderCalculation;
-
-// На сторінці відобразити перших 10 оголошень, реалізувати можливість вибору одного з варіантів для подальшого розрахунку платежу по кредиту. Формула розрахунку ануїтетного платежу (А) являє собою таке співвідношення: А = К * (П / (1 + П) -М-1), де К - сума кредиту (різниця між ціною в оголошені і першим вкладом який в свою чергу потрібно отримати з елементу повзунка що відображений на макеті), П - процентна ставка (17%), М - кількість місяців. Результат розрахунку відобразити в блоці з підписом "Ежемесячный платёж"
-
-// ціна в оголошенні 923930 == ЦО
-// перший вклад  ==  ПВ = ЦО * %(14%)  тобто 923930 * 0,14 = 129350,20
-// сума кредиту  К = ЦО -ПВ   923930 - 129350,20
