@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import { setSubmitAction } from '../../store/actions/formSubmitAction';
@@ -11,8 +11,10 @@ function FormSubmit() {
     <Grid container direction="row" alignItems="center" spacing={4}>
       <Grid item xs={12} sm={6}>
         <Typography>
-          Отправляя заявку вы соглашатесь с условями обработки персональных
-          данных
+          Отправляя заявку вы соглашатесь с условями обработки{' '}
+          <a href="/autocredit" style={{ color: '#07b1fd' }}>
+            персональных данных
+          </a>
         </Typography>
       </Grid>
       <Grid
@@ -23,13 +25,12 @@ function FormSubmit() {
         direction="row"
         justifyContent="flex-end"
       >
-        <Button
-          variant="contained"
-          color="primary"
+        <button
+          className="submit_button"
           onClick={(e) => dispatch(setSubmitAction())}
         >
-          Primary
-        </Button>
+          Отправить заявку
+        </button>
       </Grid>
     </Grid>
   );

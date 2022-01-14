@@ -137,3 +137,20 @@ span .MuiSlider-thumb {
 .align_text {
   text-align: end;
 }
+.submit_button {
+  color: #ffffff;
+  background: #07b1fd;
+  border-radius: 20px;
+  width: 219px;
+  height: 60px;
+  border: none;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 160%;
+  transition: all 100ms ease;
+  &:hover {
+    background: #e790a6;
+  }
+}
