@@ -4,4 +4,5 @@ export const SET_WORK_PHONE = 'SET_WORK_PHONE';
 export const SET_ADDRESS = 'SET_ADDRESS';
 export const SET_TRUST_PHONE = 'SET_TRUST_PHONE';
 export const SET_TRUST_PERSON = 'SET_TRUST_PERSON';
+export const SET_TRUST_MEMBERS = 'SET_TRUST_MEMBERS';
 export const SUBMIT_FORM = 'SUBMIT_FORM';

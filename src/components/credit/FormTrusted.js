@@ -1,34 +1,17 @@
-import {
-  FormControl,
-  Grid,
-  InputLabel,
-  Select,
-  TextField,
-} from '@material-ui/core';
+import { Grid, TextField } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSubmitAction } from '../../store/actions/formSubmitAction';
 import {
-  SET_TRUST_PERSON,
-  SET_TRUST_PHONE,
-} from '../../store/constants/formTypes';
+  setFormTrustedMembers,
+  setFormTrustPerson,
+  setFormTrustPhone,
+  setSubmitAction,
+} from '../../store/actions/formSubmitAction';
 
 function FormTrusted() {
-  const [trustPhone, setTrustPhone] = useState('');
   const [trustPerson, setTrustPerson] = useState('');
-
-  const [state, setState] = React.useState({
-    age: '',
-    name: 'hai',
-  });
-
-  const handleChange = (event) => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
-  };
+  const [trustPhone, setTrustPhone] = useState('');
+  const [trustMembers, setTrustMembers] = useState('');
 
   const dispatch = useDispatch();
 
@@ -38,14 +21,9 @@ function FormTrusted() {
   };
 
   useEffect(() => {
-    dispatch({
-      type: SET_TRUST_PERSON,
-      payload: trustPerson,
-    });
-    dispatch({
-      type: SET_TRUST_PHONE,
-      payload: trustPhone,
-    });
+    dispatch(setFormTrustPerson(trustPerson));
+    dispatch(setFormTrustPhone(trustPhone));
+    dispatch(setFormTrustedMembers(trustMembers));
   });
 
   const handleInputChangePerson = (e) => {
@@ -53,6 +31,9 @@ function FormTrusted() {
   };
   const handleInputChangePhone = (e) => {
     setTrustPhone(e.target.value);
+  };
+  const handleInputChangeMembers = (e) => {
+    setTrustMembers(e.target.value);
   };
 
   return (
@@ -83,27 +64,15 @@ function FormTrusted() {
             />
           </Grid>
           <Grid item xs={12} sm={3}>
-            <FormControl variant="outlined" style={{ width: '100%' }}>
-              <InputLabel htmlFor="outlined-age-native-simple">
-                Кем приходится
-              </InputLabel>
-              <Select
-                native
-                value={state.age}
-                onChange={handleChange}
-                label="Age"
-                inputProps={{
-                  name: 'age',
-                  id: 'outlined-age-native-simple',
-                }}
-              >
-                <option aria-label="None" value="" />
-                <option value={10}>Родственник</option>
-                <option value={20}>Брат</option>
-                <option value={30}>Сестра</option>
-                <option value={30}>Сосед</option>
-              </Select>
-            </FormControl>
+            <TextField
+              id="outlined-basic"
+              label="Кем приходится"
+              variant="outlined"
+              fullWidth={true}
+              type="text"
+              value={trustMembers}
+              onChange={handleInputChangeMembers}
+            />
           </Grid>
         </Grid>
       </form>

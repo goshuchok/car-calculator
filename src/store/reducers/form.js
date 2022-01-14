@@ -2,6 +2,7 @@ import {
   SET_ADDRESS,
   SET_MOBILE_PHONE,
   SET_NAME,
+  SET_TRUST_MEMBERS,
   SET_TRUST_PERSON,
   SET_TRUST_PHONE,
   SET_WORK_PHONE,
@@ -15,6 +16,7 @@ const initialState = {
   formAddress: '',
   formTrustPhone: '',
   formTrustPerson: '',
+  formTrustMembers: '',
   message: '',
 };
 
@@ -50,6 +52,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         formTrustPerson: action.payload,
       };
+    case SET_TRUST_MEMBERS:
+      return {
+        ...state,
+        formTrustMembers: action.payload,
+      };
     case SUBMIT_FORM:
       console.log('--- Triggered Form submission ---');
       console.log('Form Name - ', state.formName);
@@ -58,6 +65,7 @@ const reducer = (state = initialState, action) => {
       console.log('Form Address - ', state.formAddress);
       console.log('Form Trust Person - ', state.formTrustPerson);
       console.log('Form Trust Phone - ', state.formTrustPhone);
+      console.log('Form Trust Members - ', state.formTrustMembers);
       console.log('--- Form submitted!! ---');
       return {
         ...state,
