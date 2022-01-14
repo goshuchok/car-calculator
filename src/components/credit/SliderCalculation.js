@@ -11,16 +11,16 @@ function SliderCalculation() {
   const { firstInstall } = useSelector((state) => state.calculator);
   const { percentOff } = useSelector((state) => state.calculator);
 
-  console.log('months', months);
-  console.log('monthsPrice', monthsPrice);
-  console.log('firstInstall', firstInstall);
-  console.log('percentOff', percentOff);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMonthsPrice(calculate(firstInstall.price, months, percentOff)));
-  }, [dispatch, firstInstall.price, months, percentOff]);
+    dispatch(getMonthsPrice(calculate(firstInstall, months, percentOff)));
+  }, [dispatch, firstInstall, months, percentOff]);
+
+  console.log('months', months);
+  console.log('monthsPrice', monthsPrice);
+  console.log('firstInstall.price', firstInstall);
+  console.log('percentOff', percentOff);
 
   const ifPayNaN = (value) => {
     if (isNaN(value)) {
@@ -29,15 +29,13 @@ function SliderCalculation() {
     return value.toFixed(0);
   };
 
-  console.log('calculate', calculate(firstInstall.price, months, percentOff));
-
   return (
     <Container>
       <Box borderTop={1}>
         <Grid container direction="row" spacing={4}>
           <Grid item lg={3} md={3} sm={6}>
             <p className="car_cost">Стоимость авто</p>
-            <p className="car_sum">{firstInstall.price || 0} UA</p>
+            <p className="car_sum">{firstInstall || 0} UA</p>
           </Grid>
           <Grid item lg={3} md={3} sm={6}>
             <p className="car_cost">Ежемесячный платёж</p>

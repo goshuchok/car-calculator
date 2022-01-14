@@ -17,7 +17,7 @@ function calcFormat(value) {
 }
 
 function SliderTerm() {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(2);
 
   const dispatch = useDispatch();
 

@@ -18,11 +18,7 @@ import CheckedCar from './CheckedCar';
 
 function CarsCard() {
   const { unique } = useSelector((state) => state.uniqueData);
-  const [selected, setSelected] = useState(true);
-
-  const handleSelected = () => {
-    selected ? setSelected(false) : setSelected(true);
-  };
+  const [selected, setSelected] = useState(false);
 
   const carImage = unique.photoData?.seoLinkSX ?? no_image;
   return (
@@ -48,7 +44,7 @@ function CarsCard() {
                 )}
               </CardActionArea>
               <CardActionArea
-                className={selected ? 'selected clicked' : 'selected'}
+                className={selected ? 'selected clicked' : 'selected '}
               >
                 <CardContent>
                   <Typography style={{ color: '#949494', paddingBottom: 10 }}>
@@ -63,10 +59,10 @@ function CarsCard() {
                     justifyContent="space-between"
                   >
                     <Grid item sm={6}>
-                      <p className="price_black">{car.UAH} ₽</p>
+                      <p className="price_black">{car.UAH} UA</p>
                     </Grid>
                     <Grid item sm={6} className="align_text">
-                      <p className="month_black">от 15 000 Р / мес.</p>
+                      <p className="month_black">от 15 000 UA / мес.</p>
                     </Grid>
                   </Grid>
                   <Grid
@@ -76,19 +72,23 @@ function CarsCard() {
                   >
                     <Grid item sm={6}>
                       <Grid>
-                        <p className="price_blue">{car.UAH} ₽</p>
+                        <p className="price_blue">{car.UAH} UA</p>
                         <img src={shield} alt="shield" />
                       </Grid>
                     </Grid>
                     <Grid item sm={6} className="align_text">
-                      <p className="month_blue">от 15 000 Р / мес.</p>
+                      <p className="month_blue">от 15 000 UA / мес.</p>
                     </Grid>
                   </Grid>
                   <Grid container className="card_controls">
                     <CheckedCar
                       price={car.UAH}
-                      // selected={selected}
-                      // handleSelected={handleSelected}
+                      selected={selected === car.userId}
+                      handleSelected={() =>
+                        setSelected(
+                          selected !== car.userId ? car.userId : false
+                        )
+                      }
                     />
                   </Grid>
                 </CardContent>
