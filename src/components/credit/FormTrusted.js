@@ -2,7 +2,6 @@ import {
   FormControl,
   Grid,
   InputLabel,
-  MenuItem,
   Select,
   TextField,
 } from '@material-ui/core';
@@ -17,6 +16,19 @@ import {
 function FormTrusted() {
   const [trustPhone, setTrustPhone] = useState('');
   const [trustPerson, setTrustPerson] = useState('');
+
+  const [state, setState] = React.useState({
+    age: '',
+    name: 'hai',
+  });
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    setState({
+      ...state,
+      [name]: event.target.value,
+    });
+  };
 
   const dispatch = useDispatch();
 
@@ -72,19 +84,24 @@ function FormTrusted() {
           </Grid>
           <Grid item xs={12} sm={3}>
             <FormControl variant="outlined" style={{ width: '100%' }}>
-              <InputLabel id="demo-simple-select-outlined-label">
-                Age
+              <InputLabel htmlFor="outlined-age-native-simple">
+                Кем приходится
               </InputLabel>
               <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
+                native
+                value={state.age}
+                onChange={handleChange}
+                label="Age"
+                inputProps={{
+                  name: 'age',
+                  id: 'outlined-age-native-simple',
+                }}
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem>Ten</MenuItem>
-                <MenuItem>Twenty</MenuItem>
-                <MenuItem>Thirty</MenuItem>
+                <option aria-label="None" value="" />
+                <option value={10}>Родственник</option>
+                <option value={20}>Брат</option>
+                <option value={30}>Сестра</option>
+                <option value={30}>Сосед</option>
               </Select>
             </FormControl>
           </Grid>
