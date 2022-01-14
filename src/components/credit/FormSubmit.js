@@ -8,7 +8,13 @@ function FormSubmit() {
   const dispatch = useDispatch();
 
   return (
-    <Grid container direction="row" alignItems="center" spacing={4}>
+    <Grid
+      container
+      className="form_submit"
+      direction="row"
+      alignItems="center"
+      spacing={4}
+    >
       <Grid item xs={12} sm={6}>
         <Typography>
           Отправляя заявку вы соглашатесь с условями обработки{' '}

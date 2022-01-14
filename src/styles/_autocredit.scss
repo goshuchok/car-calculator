@@ -9,6 +9,7 @@
   font-size: 24px;
   line-height: 38px;
   font-weight: 400;
+  padding-bottom: 40px;
   &::before {
     margin-left: -47px;
     position: absolute;
@@ -30,6 +31,7 @@
   font-size: 24px;
   line-height: 38px;
   font-weight: 400;
+  padding: 40px 0;
 }
 span .MuiSlider-rail {
   height: 6px;
@@ -153,4 +155,7 @@ span .MuiSlider-thumb {
   &:hover {
     background: #e790a6;
   }
+}
+.form_submit {
+  padding: 40px 0 60px;
 }
