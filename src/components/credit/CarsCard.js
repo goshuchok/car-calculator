@@ -18,6 +18,7 @@ import CheckedCar from './CheckedCar';
 
 function CarsCard() {
   const { unique } = useSelector((state) => state.uniqueData);
+  const { monthsPrice } = useSelector((state) => state.calculator);
   const [selected, setSelected] = useState(false);
 
   const carImage = unique.photoData?.seoLinkSX ?? no_image;
@@ -62,7 +63,9 @@ function CarsCard() {
                       <p className="price_black">{car.UAH} UA</p>
                     </Grid>
                     <Grid item sm={6} className="align_text">
-                      <p className="month_black">от 15 000 UA / мес.</p>
+                      <p className="month_black">
+                        от {monthsPrice.toFixed(0)} UA / мес.
+                      </p>
                     </Grid>
                   </Grid>
                   <Grid
@@ -77,7 +80,9 @@ function CarsCard() {
                       </Grid>
                     </Grid>
                     <Grid item sm={6} className="align_text">
-                      <p className="month_blue">от 15 000 UA / мес.</p>
+                      <p className="month_blue">
+                        от {monthsPrice.toFixed(0) || 0} UA / мес.
+                      </p>
                     </Grid>
                   </Grid>
                   <Grid container className="card_controls">

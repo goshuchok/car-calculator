@@ -31,7 +31,7 @@ function CreditInput() {
 
   useEffect(() => {
     dispatch(getMarksAction());
-  }, []);
+  }, [dispatch]);
 
   const handleChangeBrand = (event) => {
     setBrandCar(event.target.value);
@@ -42,7 +42,7 @@ function CreditInput() {
     let data = { markaId: brandCar, modelId: event.target.value };
     dispatch(getSearchAction(data)).then((response) => {
       let ids = response.payload.result.search_result.ids;
-
+      // eslint-disable-next-line array-callback-return
       ids.map((id) => {
         dispatch(getUniqueAction(id));
       });
@@ -57,9 +57,9 @@ function CreditInput() {
           select
           label="Select"
           value={brandCar}
-          defaultValue=""
+          // defaultValue=""
           onChange={handleChangeBrand}
-          variant="filled"
+          variant="outlined"
         >
           {marks.map((mark) => (
             <MenuItem key={mark.value} value={mark.value}>
@@ -73,9 +73,9 @@ function CreditInput() {
           select
           label="Select"
           value={modelCar}
-          defaultValue=""
+          // defaultValue=""
           onChange={handleChangeModel}
-          variant="filled"
+          variant="outlined"
         >
           {model.map((model) => (
             <MenuItem key={model.value} value={model.value}>

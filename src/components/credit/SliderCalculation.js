@@ -17,11 +17,6 @@ function SliderCalculation() {
     dispatch(getMonthsPrice(calculate(firstInstall, months, percentOff)));
   }, [dispatch, firstInstall, months, percentOff]);
 
-  console.log('months', months);
-  console.log('monthsPrice', monthsPrice);
-  console.log('firstInstall.price', firstInstall);
-  console.log('percentOff', percentOff);
-
   const ifPayNaN = (value) => {
     if (isNaN(value)) {
       return 0;

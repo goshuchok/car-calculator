@@ -63,7 +63,7 @@ function FormBorrower() {
           <TextField
             id="outlined-basic"
             label="Полное ФИО"
-            variant="filled"
+            variant="outlined"
             fullWidth={true}
             type="text"
             value={name}
@@ -74,7 +74,7 @@ function FormBorrower() {
           <TextField
             id="outlined-basic"
             label="Мобильный телефон"
-            variant="filled"
+            variant="outlined"
             fullWidth={true}
             type="tel"
             value={mobilePhone}
@@ -85,7 +85,7 @@ function FormBorrower() {
           <TextField
             id="outlined-basic"
             label="Рабочий телефон"
-            variant="filled"
+            variant="outlined"
             fullWidth={true}
             type="tel"
             value={workPhone}
@@ -96,7 +96,7 @@ function FormBorrower() {
           <TextField
             id="outlined-basic"
             label="Адрес фактического проживания "
-            variant="filled"
+            variant="outlined"
             fullWidth={true}
             type="text"
             value={address}

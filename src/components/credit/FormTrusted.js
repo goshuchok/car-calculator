@@ -71,11 +71,13 @@ function FormTrusted() {
             />
           </Grid>
           <Grid item xs={12} sm={3}>
-            <FormControl variant="filled" style={{ width: '100%' }}>
-              <InputLabel id="demo-simple-select-filled-label">Age</InputLabel>
+            <FormControl variant="outlined" style={{ width: '100%' }}>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Age
+              </InputLabel>
               <Select
-                labelId="demo-simple-select-filled-label"
-                id="demo-simple-select-filled"
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
               >
                 <MenuItem value="">
                   <em>None</em>

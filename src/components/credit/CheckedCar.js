@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import CircleChecked from '@material-ui/icons/CheckCircleOutline';
@@ -7,11 +7,6 @@ import { getFirstInstall } from '../../store/actions/calculatorAction';
 
 function CheckedCar({ price, selected, handleSelected }) {
   const dispatch = useDispatch();
-
-  if (selected) {
-    console.log('selected', selected);
-    console.log('price', price);
-  }
 
   useEffect(() => {
     if (selected) {
