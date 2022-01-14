@@ -1,10 +1,17 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Box, Container, Typography } from '@material-ui/core';
 
 function Sell() {
   return (
     <Container>
-      <Typography>Take the credit of our dream</Typography>
+      <Box sx={{ my: 2 }}>
+        <Typography
+          variant="h3"
+          style={{ color: '#07b1fd', textAlign: 'center' }}
+        >
+          Take the credit of our dream
+        </Typography>
+      </Box>
     </Container>
   );
 }
