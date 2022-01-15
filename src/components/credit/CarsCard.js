@@ -66,7 +66,9 @@ function CarsCard() {
                     </Grid>
                     <Grid item sm={6} className="align_text">
                       <p className="month_black">
-                        от {monthsPrice.toFixed(0)} UA / мес.
+                        от{' '}
+                        {selected === car.userId ? monthsPrice.toFixed(0) : '0'}{' '}
+                        UA / мес.
                       </p>
                     </Grid>
                   </Grid>
@@ -83,7 +85,9 @@ function CarsCard() {
                     </Grid>
                     <Grid item sm={6} className="align_text">
                       <p className="month_blue">
-                        от {monthsPrice.toFixed(0) || 0} UA / мес.
+                        от{' '}
+                        {selected === car.userId ? monthsPrice.toFixed(0) : '0'}{' '}
+                        UA / мес.
                       </p>
                     </Grid>
                   </Grid>
