@@ -41,7 +41,13 @@ function SliderTerm() {
           disableUnderline: true,
         }}
       />
-      <Slider onChange={handleChange} step={1} max={96} />
+      <Slider
+        onChange={handleChange}
+        step={1}
+        min={2}
+        max={96}
+        defaultValue={3}
+      />
       <Grid container>
         <Grid item xs={6} sm={6}>
           <Typography>1 мес</Typography>
