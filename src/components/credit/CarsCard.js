@@ -45,7 +45,9 @@ function CarsCard() {
                 )}
               </CardActionArea>
               <CardActionArea
-                className={selected ? 'selected clicked' : 'selected '}
+                className={
+                  selected !== car.userId ? 'selected ' : 'selected clicked'
+                }
               >
                 <CardContent>
                   <Typography style={{ color: '#949494', paddingBottom: 10 }}>
