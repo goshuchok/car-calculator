@@ -1,10 +1,11 @@
 import React from 'react';
 
 import { Box, Container, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 function By() {
   return (
-    <Container>
+    <Container className="pageNotFound">
       <Box sx={{ my: 2 }}>
         <Typography
           variant="h3"
@@ -12,6 +13,10 @@ function By() {
         >
           By this auto
         </Typography>
+
+        <Link className="shine-button" to="/autocredit">
+          Перейти к автокредитам
+        </Link>
       </Box>
     </Container>
   );

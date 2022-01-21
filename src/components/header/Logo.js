@@ -17,7 +17,7 @@ function Logo() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Link className="shine-button" to="/" style={{ textDecoration: 'none' }}>
+      <Link to="/" style={{ textDecoration: 'none' }}>
         <img src={logo} alt="logo" className={classes.logo} />
       </Link>
     </div>
